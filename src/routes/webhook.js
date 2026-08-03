@@ -15,7 +15,11 @@ router.get('/', (req, res) => {
   const challenge = req.query['hub.challenge'];
 
   if (mode === 'subscribe' && token === process.env.WHATSAPP_VERIFY_TOKEN) {
-    return res.status(200).send(challenge);
+    // Validate challenge contains only safe alphanumeric characters before reflecting
+    if (!challenge || !/^[a-zA-Z0-9_-]+$/.test(challenge)) {
+      return res.status(400).json({ error: 'Invalid challenge format' });
+    }
+    return res.status(200).type('text/plain').send(challenge);
   }
 
   return res.status(403).json({ error: 'Verification failed' });

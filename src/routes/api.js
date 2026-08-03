@@ -2,9 +2,20 @@
 
 const express = require('express');
 const router = express.Router();
+const rateLimit = require('express-rate-limit');
 const { getDb } = require('../db/database');
 const { compareQuotesByProduct, getBestQuote } = require('../services/priceComparison');
 const { calculateLandedCost } = require('../services/calculator');
+
+const apiLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 60,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many requests, please try again later.' },
+});
+
+router.use(apiLimiter);
 
 /**
  * GET /api/quotes?product=<name>
