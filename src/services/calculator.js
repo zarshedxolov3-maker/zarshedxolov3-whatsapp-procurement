@@ -63,7 +63,11 @@ function calculateLandedCost({
   const productCost = unitPrice * quantity;
 
   const effectiveDutyRate =
-    dutyRate != null ? dutyRate : hsChapter != null ? (DEFAULT_DUTY_RATES[hsChapter] ?? FALLBACK_DUTY_RATE) : FALLBACK_DUTY_RATE;
+    dutyRate != null
+      ? dutyRate
+      : hsChapter != null
+        ? (DEFAULT_DUTY_RATES[hsChapter] ?? FALLBACK_DUTY_RATE)
+        : FALLBACK_DUTY_RATE;
 
   const dutiesCost = productCost * effectiveDutyRate;
   const totalLandedCost = productCost + shippingCost + dutiesCost + otherCosts;
