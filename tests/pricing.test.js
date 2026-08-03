@@ -1,5 +1,3 @@
-
-
 const { calculatePricing, compareWithTitan, estimateWeightKg } = require('../src/services/pricing');
 
 describe('estimateWeightKg', () => {

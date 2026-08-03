@@ -1,5 +1,3 @@
-
-
 const { parseSupplierMessage } = require('../src/services/parser');
 
 describe('parseSupplierMessage', () => {
@@ -13,7 +11,7 @@ describe('parseSupplierMessage', () => {
 
   it('extracts price, currency, storage, color, region, quantity and date', () => {
     const result = parseSupplierMessage(
-      'Apple iPhone 15 Pro 256GB Natural Titanium Japan 10 pcs USD 950 2024-03-01'
+      'Apple iPhone 15 Pro 256GB Natural Titanium Japan 10 pcs USD 950 2024-03-01',
     );
     expect(result.price).toBe(950);
     expect(result.currency).toBe('USD');

@@ -1,12 +1,10 @@
-
-
 require('dotenv').config();
 const app = require('./app');
 const config = require('./config');
 
 const server = app.listen(config.port, () => {
   console.log(
-    `[${new Date().toISOString()}] TradeBay Procurement Intelligence running on port ${config.port} (${config.nodeEnv})`
+    `[${new Date().toISOString()}] TradeBay Procurement Intelligence running on port ${config.port} (${config.nodeEnv})`,
   );
 });
 

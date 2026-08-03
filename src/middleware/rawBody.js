@@ -1,5 +1,3 @@
-
-
 /**
  * Captures the raw request body buffer so the signature verifier
  * can compute HMAC-SHA256 over the exact bytes Meta signed.

@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -24,7 +22,7 @@ app.use(
     verify: (req, _res, buf) => {
       req.rawBody = buf;
     },
-  })
+  }),
 );
 
 // ── Routes ────────────────────────────────────────────────────────────────────

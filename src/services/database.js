@@ -1,5 +1,3 @@
-
-
 const path = require('path');
 const fs = require('fs');
 const Database = require('better-sqlite3');
@@ -97,13 +95,11 @@ function getProcurements({ limit = 50, offset = 0, supplier, product } = {}) {
   const where = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
   const rows = db
     .prepare(
-      `SELECT * FROM procurements ${where} ORDER BY created_at DESC LIMIT @limit OFFSET @offset`
+      `SELECT * FROM procurements ${where} ORDER BY created_at DESC LIMIT @limit OFFSET @offset`,
     )
     .all({ ...params, limit, offset });
 
-  const total = db
-    .prepare(`SELECT COUNT(*) as count FROM procurements ${where}`)
-    .get(params).count;
+  const total = db.prepare(`SELECT COUNT(*) as count FROM procurements ${where}`).get(params).count;
 
   return { rows, total, limit, offset };
 }
@@ -121,10 +117,12 @@ function deleteProcurement(id) {
 
 function upsertTitanPrice(record) {
   const db = getDb();
-  db.prepare(`
+  db.prepare(
+    `
     INSERT INTO titan_prices (product, model, storage, color, region, currency, price)
     VALUES (@product, @model, @storage, @color, @region, @currency, @price)
-  `).run(record);
+  `,
+  ).run(record);
 }
 
 function getTitanPrice({ product, model, storage, region }) {

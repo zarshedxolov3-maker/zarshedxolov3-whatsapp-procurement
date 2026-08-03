@@ -1,5 +1,3 @@
-
-
 const { parseSupplierMessage } = require('./parser');
 const { calculatePricing, compareWithTitan } = require('./pricing');
 const { insertProcurement, getTitanPrice } = require('./database');

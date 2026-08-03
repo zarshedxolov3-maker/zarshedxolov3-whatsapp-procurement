@@ -1,5 +1,3 @@
-
-
 // Environment variables for all tests – set before any module is required.
 process.env.NODE_ENV = 'test';
 process.env.DATABASE_PATH = ':memory:';

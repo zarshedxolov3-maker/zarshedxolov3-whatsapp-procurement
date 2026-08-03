@@ -1,5 +1,3 @@
-
-
 const request = require('supertest');
 const crypto = require('crypto');
 const app = require('../src/app');

@@ -1,5 +1,3 @@
-
-
 /**
  * Parses a free-text WhatsApp supplier message and extracts procurement fields.
  *
@@ -15,8 +13,7 @@ const STORAGE_PATTERN = /(\d+\s*(?:GB|TB))/i;
 const QUANTITY_PATTERN = /(?:qty|quantity|pcs?|units?)[:\s]+(\d+)|(\d+)\s*(?:pcs?|units?)/i;
 const CURRENCY_PRICE_PATTERN =
   /(?:(USD|EUR|AED|CNY|RUB|GBP|JPY|KRW|SGD)\s*(\d[\d,.]*))|(?:\$\s*(\d[\d,.]*))|(?:(\d[\d,.]*)\s*(USD|EUR|AED|CNY|RUB|GBP|JPY|KRW|SGD))/i;
-const DATE_PATTERN =
-  /(\d{4}-\d{2}-\d{2})|(\d{2}[-/.]\d{2}[-/.]\d{4})|(\d{2}[-/.]\d{2}[-/.]\d{2})/;
+const DATE_PATTERN = /(\d{4}-\d{2}-\d{2})|(\d{2}[-/.]\d{2}[-/.]\d{4})|(\d{2}[-/.]\d{2}[-/.]\d{2})/;
 
 const REGIONS = [
   'Global',
@@ -148,10 +145,7 @@ function extractProductModel(text) {
     .trim();
 
   // Remove commas / punctuation and split tokens
-  const tokens = cleaned
-    .replace(/[,;]/g, ' ')
-    .split(/\s+/)
-    .filter(Boolean);
+  const tokens = cleaned.replace(/[,;]/g, ' ').split(/\s+/).filter(Boolean);
 
   // Model = tokens after the brand name (heuristic: up to 4 tokens)
   let modelTokens;

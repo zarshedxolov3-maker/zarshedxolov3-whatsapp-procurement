@@ -1,5 +1,3 @@
-
-
 const request = require('supertest');
 
 const app = require('../src/app');
@@ -53,9 +51,10 @@ describe('POST /api/procurements', () => {
   });
 
   it('creates a procurement record and returns 201', async () => {
-    const res = await request(app)
-      .post('/api/procurements')
-      .send({ message: 'Samsung Galaxy S24 512GB Black Global 5pcs USD 800 2024-04-01', supplier: 'TestSupplier' });
+    const res = await request(app).post('/api/procurements').send({
+      message: 'Samsung Galaxy S24 512GB Black Global 5pcs USD 800 2024-04-01',
+      supplier: 'TestSupplier',
+    });
     expect(res.status).toBe(201);
     expect(res.body.saved.id).toBeDefined();
     expect(res.body.parsed.price).toBe(800);

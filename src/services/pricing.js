@@ -1,5 +1,3 @@
-
-
 const config = require('../config');
 
 /**
@@ -61,8 +59,7 @@ function calculatePricing({
   const costPerUnit = Math.round(((totalPurchaseCost + cargoCost) / quantity) * 100) / 100;
 
   // Suggested selling price to achieve desired margin
-  const suggestedSellingPrice =
-    Math.round((costPerUnit / (1 - marginPercent / 100)) * 100) / 100;
+  const suggestedSellingPrice = Math.round((costPerUnit / (1 - marginPercent / 100)) * 100) / 100;
 
   const effectiveSellingPrice = sellingPrice !== null ? sellingPrice : suggestedSellingPrice;
 
@@ -70,7 +67,7 @@ function calculatePricing({
   const totalProfit = Math.round(profitPerUnit * quantity * 100) / 100;
   const margin =
     effectiveSellingPrice > 0
-      ? Math.round(((profitPerUnit / effectiveSellingPrice) * 100) * 100) / 100
+      ? Math.round((profitPerUnit / effectiveSellingPrice) * 100 * 100) / 100
       : 0;
 
   return {
@@ -102,7 +99,7 @@ function compareWithTitan(unitCost, titanPrice) {
   }
   const priceDiff = Math.round((unitCost - titanPrice) * 100) / 100;
   const priceDiffPercent =
-    titanPrice > 0 ? Math.round(((priceDiff / titanPrice) * 100) * 100) / 100 : null;
+    titanPrice > 0 ? Math.round((priceDiff / titanPrice) * 100 * 100) / 100 : null;
   return {
     titanPrice,
     priceDiff,
