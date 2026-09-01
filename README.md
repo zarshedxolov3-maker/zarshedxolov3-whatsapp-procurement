@@ -4,6 +4,7 @@ Private, receive-only Sent v3 webhook service for TradeBay. It never sends messa
 
 ## Runtime
 
+- Node.js 22.13.0 or newer is required because the service uses the built-in `node:sqlite` module.
 - `GET /health` returns only `{ "status": "ok" }`.
 - `POST /webhooks/sent` verifies the exact received bytes before JSON parsing.
 - Authenticated events are persisted atomically before `200`.
